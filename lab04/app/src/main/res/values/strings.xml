@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">lab04</string>
+    <string name="battery_charging">Battery is charging</string>
+    <string name="battery_full">Battery is full</string>
+    <string name="battery_discharging">Battery is discharging</string>
+    <string name="health_cold">Battery health is cold</string>
+    <string name="health_dead">Battery health is dead</string>
+    <string name="health_good">Battery health is good</string>
+    <string name="health_over_voltage">Battery health is over voltage</string>
+    <string name="health_overheating">Battery health is overheating</string>
+    <string name="health_unknown">Battery health is unknown</string>
+    <string name="health_failed">Battery has failed for an unknown reason</string>
+    <string name="plugged_usb">Battery is plugged into a USB</string>
+    <string name="plugged_ac">Battery is plugged into AC outlet</string>
+    <string name="plugged_wireless">Battery is doing wireless charging</string>
+    <string name="battery_temp">Battery is at temperature</string>
+    <string name="battery_status">Battery Status</string>
+</resources>
