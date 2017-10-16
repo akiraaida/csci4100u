@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">assign01</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="quest">Question</string>
+    <string name="user_answer">User Answer</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="final_score">Final Score:</string>
+</resources>

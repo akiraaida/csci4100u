@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <item>Is the sky blue?</item>
+        <item>Is the sun yellow?</item>
+        <item>Is the grass green?</item>
+        <item>Is wood blue?</item>
+        <item>Is the moon red?</item>
+    </string-array>
+
+    <integer-array name="answers">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+</resources>
