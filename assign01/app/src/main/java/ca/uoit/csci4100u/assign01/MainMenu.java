@@ -5,44 +5,66 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * The MainMenu activity. This activity is launched first
+ * and initializes the game.
+ */
 public class MainMenu extends AppCompatActivity {
 
-    private static int[] answers;
-    private static int answered_questions;
+    private static String[] m_questions;
+    private static String[] m_answers;
+    private static int m_answeredQuestions;
 
+    /**
+     * The onCreate method which initializes the member variables
+     * @param savedInstanceState The instances state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
-        String[] questions = getResources().getStringArray(R.array.questions);
-        answers = new int[questions.length];
-        answered_questions = 0;
+        m_questions = getResources().getStringArray(R.array.questions);
+        m_answers = new String[m_questions.length];
+        m_answeredQuestions = 0;
     }
 
+    /**
+     * The onclick function for the main menu's start quiz button. This method
+     * creates an intent to ask the first question (if there are any questions).
+     * @param view The view that was clicked
+     */
     public void handleStartQuiz(View view) {
-        String[] questions = getResources().getStringArray(R.array.questions);
-
-        for (int i = 0; i < questions.length; ++i) {
-            Intent intent = new Intent(MainMenu.this, AskQuestion.class);
-            intent.putExtra(Intent.EXTRA_TEXT, questions[i]);
-            startActivityForResult(intent, i);
+        if (m_questions.length > 0) {
+            Intent questionIntent = new Intent(MainMenu.this, AskQuestion.class);
+            questionIntent.putExtra(Intent.EXTRA_TEXT, m_questions[m_answeredQuestions]);
+            startActivityForResult(questionIntent, m_answeredQuestions);
         }
     }
 
+    /**
+     * Overriden onActivityResult. Handles the answer intent and asks another
+     * question if there is another question to ask. If not, displays the summary
+     * @param requestCode The integer specified by the requested startActivityResult
+     * @param resultCode The resultCode of the answerIntent if it's good/bad
+     * @param answerIntent The answer intent which contains the answer to the asked question
+     */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        int answer = intent.getIntExtra(Intent.EXTRA_TEXT, -1);
-        answers[requestCode] = answer;
-        answered_questions += 1;
+    protected void onActivityResult(int requestCode, int resultCode, Intent answerIntent) {
+        String answer = answerIntent.getStringExtra(Intent.EXTRA_TEXT);
+        m_answers[requestCode] = answer;
+        m_answeredQuestions += 1;
 
-        if(answered_questions == answers.length) {
+        if (m_answeredQuestions == m_answers.length) {
             Intent summaryIntent = new Intent(MainMenu.this, Summary.class);
-            summaryIntent.putExtra(Intent.EXTRA_TEXT, answers);
+            summaryIntent.putExtra(Intent.EXTRA_TEXT, m_answers);
             startActivity(summaryIntent);
+            m_answeredQuestions = 0;
+            m_answers = new String[m_questions.length];
+        } else {
+            Intent questionIntent = new Intent(MainMenu.this, AskQuestion.class);
+            questionIntent.putExtra(Intent.EXTRA_TEXT, m_questions[m_answeredQuestions]);
+            startActivityForResult(questionIntent, m_answeredQuestions);
         }
     }
 }

@@ -6,5 +6,5 @@
     <string name="quest">Question</string>
     <string name="user_answer">User Answer</string>
     <string name="correct_answer">Correct Answer</string>
-    <string name="final_score">Final Score:</string>
+    <string name="summary">Summary - Score:</string>
 </resources>

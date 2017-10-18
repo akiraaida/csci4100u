@@ -5,8 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * The Summary activity. This activity is launched after
+ * all of the questions are answered displaying the game summary
+ * and score that the player received.
+ */
 public class Summary extends AppCompatActivity {
 
+    /**
+     * The onCreate method for the Summary activity which sets
+     * the display views with the questions, user answers, and
+     * the correct answers
+     * @param savedInstanceState The instances state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,26 +26,32 @@ public class Summary extends AppCompatActivity {
         int score = 0;
 
         String[] questions = getResources().getStringArray(R.array.questions);
-        int[] correctAnswers = getResources().getIntArray(R.array.answers);
+        String[] correctAnswers = getResources().getStringArray(R.array.answers);
 
-        Intent intent = getIntent();
-        int[] answers = intent.getIntArrayExtra(Intent.EXTRA_TEXT);
-        TextView textView = (TextView) findViewById(R.id.summary);
+        Intent summaryIntent = getIntent();
+        String[] userAnswers = summaryIntent.getStringArrayExtra(Intent.EXTRA_TEXT);
 
-        String quest = getResources().getString(R.string.quest);
-        String correctAnswer = getResources().getString(R.string.correct_answer);
-        String userAnswer = getResources().getString(R.string.user_answer);
+        TextView summaryTextView = (TextView) findViewById(R.id.summary);
+        TextView questionTextView = (TextView) findViewById(R.id.question);
+        TextView userAnswerTextView = (TextView) findViewById(R.id.userAnswer);
+        TextView correctAnswerTextView = (TextView) findViewById(R.id.correctAnswer);
 
-        String summary = quest + "\t" + correctAnswer + "\t" + userAnswer + "\n";
+        String questionString = "";
+        String userAnswerString = "";
+        String correctAnswerString = "";
         for (int i = 0; i < questions.length; ++i) {
-            summary += questions[i] + "\t" + answers[i] + "\t" + correctAnswers[i] + "\n";
-            if (answers[i] == correctAnswers[i]) {
-                score += 1;
+            questionString += questions[i] + "\n";
+            userAnswerString += userAnswers[i] + "\n";
+            correctAnswerString += correctAnswers[i] + "\n";
+
+            if (userAnswers[i].compareTo(correctAnswers[i]) == 0) {
+                ++score;
             }
         }
-        String finalScore = getResources().getString(R.string.final_score);
-        summary += "\n" + finalScore + " " + score;
 
-        textView.setText(summary);
+        summaryTextView.setText(summaryTextView.getText().toString() + " " + score);
+        questionTextView.setText(questionString);
+        userAnswerTextView.setText(userAnswerString);
+        correctAnswerTextView.setText(correctAnswerString);
     }
 }
