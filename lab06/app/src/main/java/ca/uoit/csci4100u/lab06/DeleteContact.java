@@ -3,7 +3,6 @@ package ca.uoit.csci4100u.lab06;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -29,7 +28,7 @@ public class DeleteContact extends AppCompatActivity {
     public void handleDeleteContact(View view) {
         Spinner spinner = (Spinner) findViewById(R.id.contactsDelete);
         String line = spinner.getSelectedItem().toString();
-        String[] data = line.split(" ");
+        String[] data = line.split(",");
         Intent intent = new Intent();
         intent.putExtra(Intent.EXTRA_TEXT, Integer.parseInt(data[0]));
         setResult(RESULT_OK, intent);
