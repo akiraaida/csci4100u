@@ -8,7 +8,7 @@
 | #4 | Broadcast Receivers| 1/1 |
 | #5 | Intent Resources | 1/1 |
 | #6 | Storage | 1/1 |
-| #7 | Database Access | /1 |
-| #8 | GPS Geocoding | /1 |
+| #7 | Database Access | 1/1 |
+| #8 | GPS Geocoding | 1/1 |
 | #9 | Maps | /1 |
 | #10 | Media Playback | /1 |
