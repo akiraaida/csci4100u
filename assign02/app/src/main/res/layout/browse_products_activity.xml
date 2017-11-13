@@ -134,14 +134,6 @@
             tools:layout_editor_absoluteY="8dp">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:onClick="handleAddNewProduct"
-                android:text="@string/add_new_product" />
-
-            <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

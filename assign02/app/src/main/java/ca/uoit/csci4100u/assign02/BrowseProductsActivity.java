@@ -3,6 +3,8 @@ package ca.uoit.csci4100u.assign02;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -87,16 +89,6 @@ public class BrowseProductsActivity extends AppCompatActivity implements TaskLis
     }
 
     /**
-     * The onClick function for the 'Add' button. This will create a sub-activity for creating
-     * a new product and adding it to the database
-     * @param view The view that has been clicked (the button)
-     */
-    public void handleAddNewProduct(View view) {
-        Intent intent = new Intent(BrowseProductsActivity.this, AddProductActivity.class);
-        startActivityForResult(intent, ADD_PRODUCT);
-    }
-
-    /**
      * The onClick function for the 'Delete' button. This will get the product id associated with the
      * current product, update the mProductList (to make sure that it is up to date), then search for
      * the productId associated with the product in mProductList. If it finds the product then it will
@@ -175,6 +167,34 @@ public class BrowseProductsActivity extends AppCompatActivity implements TaskLis
             mPosition = mProductList.size() - 1;
             showProduct();
         }
+    }
+
+    /**
+     * The menu's on create function which creates the menu in the top right corner
+     * @param menu The menu object
+     * @return Boolean if it was successful or not
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    /**
+     * The menu's on item selected function which will start the sub-activity 'AddProductActivity'
+     * @param item The menu item that has been selected
+     * @return Boolean if it was successful or not
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.addProduct) {
+            Intent intent = new Intent(BrowseProductsActivity.this, AddProductActivity.class);
+            startActivityForResult(intent, ADD_PRODUCT);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
