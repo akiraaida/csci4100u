@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">lab08</string>
+    <string name="url">URL</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="country_name">Country Name</string>
+    <string name="admin_area_province">Admin Area (Province)</string>
+    <string name="locality_city">Locality (City)</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="address_line_1">Address Line 1</string>
+</resources>
