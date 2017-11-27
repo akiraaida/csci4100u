@@ -2,4 +2,7 @@
     <string name="app_name">lab10</string>
     <string name="play">Play</string>
     <string name="pause">Pause</string>
+    <string name="jingle">Jingle Bells</string>
+    <string name="silent">Silent</string>
+    <string name="toy">Toy</string>
 </resources>

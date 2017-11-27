@@ -14,13 +14,13 @@
         tools:layout_editor_absoluteY="8dp">
 
         <Spinner
-            android:id="@+id/songList"
+            android:id="@+id/rawList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
@@ -38,6 +38,21 @@
                 android:layout_weight="1"
                 android:onClick="handlePause"
                 android:text="@string/pause" />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <VideoView
+                android:id="@+id/videoView"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
